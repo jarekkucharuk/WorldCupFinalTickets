@@ -1,9 +1,10 @@
 package sda.tickets.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
-//@NoArgsConstructor
+@AllArgsConstructor
 public class CreditCard {
 
     String ownerName;
@@ -12,13 +13,10 @@ public class CreditCard {
     String month;
     String year;
     String ccv;
+    int limit;
 
-    public CreditCard(String owner, String number, String month, String year, String ccv) {
-        this.ownerName = ownerName;
-        this.ownerSurname = ownerSurname;
-        this.number = number;
-        this.month = month;
-        this.year = year;
-        this.ccv = ccv;
+
+
+    public CreditCard() {
     }
 }

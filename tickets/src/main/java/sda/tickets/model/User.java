@@ -1,6 +1,8 @@
 package sda.tickets.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 public class User {
@@ -11,4 +13,6 @@ public class User {
     String nick;
     String email;
 
+    public User() {
+    }
 }
