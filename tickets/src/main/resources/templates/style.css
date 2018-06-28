@@ -1,0 +1,94 @@
+p {
+    color: blue;
+}
+
+.left {
+    text-align: left;
+}
+
+.right {
+    text-align: right;
+}
+
+.center {
+    text-align: center;
+}
+
+.justify {
+    text-align:justify;
+}
+
+.container {
+    text-align: center;
+}
+
+.big-blue-text {
+    color: blue;
+    font-size: 50px;
+}
+
+#paragraph {
+    font-weight: bold;
+    text-decoration: underline;
+    font-style: italic;
+}
+
+b {
+    font-weight: normal;
+    font-style: italic;
+}
+
+ol {
+    /*    list-style-type: circle*/
+}
+
+ul {
+    /*    list-style-type: armenian*/
+}
+
+table {
+    border-collapse: collapse
+}
+
+table, td, th    {
+    border: 1px solid black;
+}
+
+
+.person-table th {
+    background-color: lightgray;
+    width: 100px;
+}
+
+.person-table td{
+    border: 2px solid red;
+}
+
+.person-table tr :first-child {
+    text-align: right
+}
+
+.image {
+    width: 300px;
+
+    height: 300px;
+
+    transform:rotate(10deg)
+}
+
+.ref {
+    color: brown;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.ref:hover {
+    text-decoration: underline;
+    font-size: 24px;
+    background-color: lightblue;
+
+}
+
+.ref:visited {
+    color: yellow
+}

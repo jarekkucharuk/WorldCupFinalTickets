@@ -18,14 +18,19 @@ public class TicketOrderController {
         return "registration";
     }
 
-    @RequestMapping("/addCard")
-    public void addCreditCard() {
-
+    @RequestMapping("/userData")
+    public String addCreditCard() {
+        return "userData";
     }
 
     @RequestMapping("/login")
     public String orderTickets() {
         return "login";
+    }
+
+    @RequestMapping("/availableTickets")
+    public String displayAvailableTickets() {
+        return "availableTickets";
     }
 
 
