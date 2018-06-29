@@ -15,8 +15,6 @@ public class CreditCard {
     String ccv;
     int limit;
 
-
-
     public CreditCard() {
     }
 }

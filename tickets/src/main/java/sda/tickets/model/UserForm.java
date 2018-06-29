@@ -4,16 +4,16 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
-@AllArgsConstructor
-public class User {
+import javax.persistence.Table;
 
-    String name;
-    String surname;
-    String password;
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class UserForm {
+
+    String firstName;
+    String lastName;
     String nick;
     String email;
 
-    public User() {
-    }
 }

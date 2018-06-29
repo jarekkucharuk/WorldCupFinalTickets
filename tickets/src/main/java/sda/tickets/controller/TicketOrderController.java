@@ -2,10 +2,11 @@ package sda.tickets.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import sda.tickets.model.CreditCard;
 import sda.tickets.model.User;
-//import org.springframework.web.bind.annotation.RestController;
 
 @Controller
 @RequestMapping(path = "/home")
@@ -15,11 +16,6 @@ public class TicketOrderController {
     public String loadHome() {
         return "home";
     }
-
-    /*@RequestMapping("/registration")
-    public String addUser() {
-        return "registration";
-    }*/
 
     @RequestMapping("/userData")
     public String addCreditCard() {
@@ -37,8 +33,15 @@ public class TicketOrderController {
     }
 
     @RequestMapping("/registration")
-    public String addUser(Model model){
+    public String registerUser(Model model) {
         model.addAttribute("user", new User());
+        return "registration";
+    }
+
+    @PostMapping(path="/registration")
+    public String addUser(@ModelAttribute("user") User user){
+
+        //cokolwiek z user podanym w form
         return "registration";
     }
 
