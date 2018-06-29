@@ -8,13 +8,13 @@
     Rejestracja
 </head>
 <body>
-<form th:action="@{/home}"
-      th:object="${user}" method="POST">
+<form th:action="@{/home/registration}"
+      th:object="${userForm}" method="POST">
     Imię:
-    <input type="text" th:field="*{name}"/>
+    <input type="text" th:field="*{firstName}"/>
     <br/>
     Nazwisko:
-    <input type="text" th:field="*{surname}"/>
+    <input type="text" th:field="*{lastName}"/>
     <br/>
     Nazwa użytkownika:
     <input type="text" th:field="*{nick}"/>

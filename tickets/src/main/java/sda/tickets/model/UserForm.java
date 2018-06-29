@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Table;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
 public class UserForm {
 
@@ -15,5 +14,10 @@ public class UserForm {
     String lastName;
     String nick;
     String email;
+    String password;
+    Long id;
+
+    public UserForm(){
+    }
 
 }

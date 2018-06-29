@@ -2,15 +2,22 @@ package sda.tickets.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import sda.tickets.model.CreditCard;
-import sda.tickets.model.User;
+import sda.tickets.model.UserForm;
+import sda.tickets.service.UserService;
 
 @Controller
 @RequestMapping(path = "/home")
 public class TicketOrderController {
+
+    private final UserService userService;
+
+    public TicketOrderController(UserService userService) {
+        this.userService = userService;
+    }
 
     @RequestMapping("")
     public String loadHome() {
@@ -32,17 +39,18 @@ public class TicketOrderController {
         return "availableTickets";
     }
 
-    @RequestMapping("/registration")
+    @GetMapping("/registration")
     public String registerUser(Model model) {
-        model.addAttribute("user", new User());
-        return "registration";
+        model.addAttribute("userForm", new UserForm());
+        return "addUser";
     }
 
     @PostMapping(path="/registration")
-    public String addUser(@ModelAttribute("user") User user){
+    public String addUser(@ModelAttribute("userForm") UserForm userForm,
+                          Model model){
 
-        //cokolwiek z user podanym w form
-        return "registration";
+        userService.createUser(userForm);
+        return "login";
     }
 
 }
