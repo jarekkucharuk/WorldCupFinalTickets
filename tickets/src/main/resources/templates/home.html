@@ -1,29 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css" type="text/css"/>
-    <style>
-        body {
-            color: darkblue;
-        }
-        p{
-            font-size: 50px;
-            color: orangered;
-        }
-    </style>
+
     <title>Strona powitalna</title>
 </head>
-<br>
+<body>
 
-<!--//<br action="ReadData" method="POST" target="_blank">-->
 <div class="big-blue-text">
-    WITAJ
+    WITAJ UŻYTKOWNIKU
 </div>
 
+<form th:action="@{/home/login}">
 <input type="submit" value="Logowanie"/>
-<input type="submit" value="Rejestracja"/>
-
+</form>
+<form th:action="@{/home/registration}">
+<input  type="submit" value="Rejestracja"/>
+</form>
 
 </body>
 </html>

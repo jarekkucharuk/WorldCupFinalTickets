@@ -23,15 +23,13 @@ public class TicketOrderController {
     public String loadHome() {
         return "home";
     }
-
+    @GetMapping("/login")
+    public String goLogin() {
+        return "login";
+    }
     @RequestMapping("/userData")
     public String addCreditCard() {
         return "userData";
-    }
-
-    @RequestMapping("/login")
-    public String orderTickets() {
-        return "login";
     }
 
     @RequestMapping("/availableTickets")
