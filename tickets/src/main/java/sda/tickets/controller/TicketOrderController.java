@@ -1,5 +1,6 @@
 package sda.tickets.controller;
 
+import com.sun.org.apache.xml.internal.resolver.helpers.PublicId;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,8 +24,13 @@ public class TicketOrderController {
     public String loadHome() {
         return "home";
     }
+//    @RequestMapping("/login")
+//    public String goLogin() {
+//        return "login";
+//    }
+
     @GetMapping("/login")
-    public String goLogin() {
+    public String loginUser(){
         return "login";
     }
     @RequestMapping("/userData")

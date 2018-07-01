@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css" type="text/css"/>
@@ -71,6 +72,24 @@
     </tbody>
     <tfoot>  foot </tfoot>
 </table>
+</br>
+<table class="person-table">
+    <tr>
+        <td>
+            <form th:action="@{/home/userData}">
+                <input type="submit" value="Twoje konto"/>
+            </form>
+        </td>
+        <td>
+            <form th:action="@{/home}">
+                <input type="submit" value="Wyloguj"/>
+            </form>
+        </td>
+
+    </tr>
+    </thead>
+</table>
+
 
 </body>
 </html>

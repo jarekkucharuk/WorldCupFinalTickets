@@ -12,5 +12,8 @@
 <br action="ReadData" method="POST" target="_blank">
 <input type="text" name="nick"  /> nazwa użytkownika </br>
 <input type="text" name="password" checked="checked" /> hasło</br>
+<form th:action="@{/home/userData}">
+    <input type="submit" value="Zaloguj"/>
+</form>
 </body>
 </html>

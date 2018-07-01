@@ -11,25 +11,61 @@
 <div class="big-blue-text">Rejestracja</div>
 <form th:action="@{/home/registration}"
       th:object="${userForm}" method="POST">
-    Imię:
-    <input type="text" th:field="*{firstName}"/>
-    <br/>
-    Nazwisko:
-    <input type="text" th:field="*{lastName}"/>
-    <br/>
-    Nazwa użytkownika:
-    <input type="text" th:field="*{nick}"/>
-    <br/>
-    e-mail:
-    <input type="text" th:field="*{email}"/>
-    <br/>
-    Hasło:
-    <input type="text" th:field="*{password}"/>
-    <br/>
-    Powtórz hasło:
-    <input type="text" th:field="*{password}"/>
-    <br/>
-    <input type="submit" value="Dodaj użytkownika"/>
+    <table class="person-table">
+        <tr>
+            <td>
+                Imię:
+            </td>
+            <td><input type="text" th:field="*{firstName}"/>
+            </td>
+        </tr>
+        <br/>
+
+        <tr>
+            <td>
+                Nazwisko:
+            </td>
+            <td>
+                <input type="text" th:field="*{lastName}"/>
+            </td>
+        </tr>
+        <br/>
+        <tr>
+            <td>
+                Nazwa użytkownika:
+            </td>
+            <td>
+                <input type="text" th:field="*{nick}"/>
+            </td>
+        </tr>
+        <br/>
+        e-mail:
+        <input type="text" th:field="*{email}"/>
+        <br/>
+        Hasło:
+        <input type="text" th:field="*{password}"/>
+        <br/>
+        Powtórz hasło:
+        <input type="text" th:field="*{password}"/>
+        <br/>
+    </table>
+    <table class="person-table">
+        <tr>
+            <td>
+                <form th:action="@{/home/login}">
+                    <input type="submit" value="Dodaj użytkownika"/>
+                </form>
+            </td>
+            <td>
+                <form th:action="@{/home}">
+                    <input type="submit" value="Strona główna"/>
+                </form>
+            </td>
+
+        </tr>
+        </thead>
+    </table>
+
 </form>
 
 </body>

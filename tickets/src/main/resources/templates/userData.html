@@ -6,8 +6,7 @@
     <link rel="stylesheet" href="style.css" type="text/css"/>
     <title>User's data</title>
 </head>
-<body>
-<div class="big-blue-text">Twoje dane</div>
+<br>
 <table class="person-table">
     <caption>Twoje dane</caption>
     <thead>
@@ -49,5 +48,22 @@
     </tr>
     </tbody>
 </table>-->
+</br>
+<table class="person-table">
+    <tr>
+        <td>
+            <form th:action="@{/home/availableTickets}">
+                <input type="submit" value="Dostępne bilety"/>
+            </form>
+        </td>
+        <td>
+            <form th:action="@{/home}">
+                <input type="submit" value="Wyloguj"/>
+            </form>
+        </td>
+
+    </tr>
+    </thead>
+</table>
 </body>
 </html>
