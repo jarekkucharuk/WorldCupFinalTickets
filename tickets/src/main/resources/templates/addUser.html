@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="pl" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css" type="text/css"/>
 
-    <title>Rejestracja nowego użytkownika</title>
-
+    <title>Rejestracja</title>
 </head>
 <body>
 <div class="big-blue-text">Rejestracja</div>
 <form th:action="@{/home/registration}"
       th:object="${userForm}" method="POST">
-    <table class="person-table">
+    <table >
         <tr>
             <td>
                 Imię:
@@ -32,22 +32,40 @@
         <br/>
         <tr>
             <td>
-                Nazwa użytkownika:
+                Nick :
             </td>
             <td>
                 <input type="text" th:field="*{nick}"/>
             </td>
         </tr>
         <br/>
-        e-mail:
-        <input type="text" th:field="*{email}"/>
+        <tr>
+            <td>
+                e-mail:
+            </td>
+            <td>
+                <input type="text" th:field="*{email}"/>
+            </td>
+        </tr>
         <br/>
-        Hasło:
-        <input type="text" th:field="*{password}"/>
+        <tr>
+            <td>Hasło:
+            </td>
+            <td>
+                <input type="text" th:field="*{password}"/>
+            </td>
+        </tr>
         <br/>
-        Powtórz hasło:
-        <input type="text" th:field="*{password}"/>
+        <tr>
+            <td>
+                Powtórz hasło:
+            </td>
+            <td>
+                <input type="text" th:field="*{password}"/>
+            </td>
+        </tr>
         <br/>
+
     </table>
     <table class="person-table">
         <tr>

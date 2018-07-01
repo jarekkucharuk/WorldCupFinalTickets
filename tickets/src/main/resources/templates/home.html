@@ -13,12 +13,22 @@
     WITAJ UŻYTKOWNIKU
 </div>
 
-<form th:action="@{/home/login}">
-<input type="submit" value="Logowanie"/>
-</form>
-<form th:action="@{/home/registration}">
-<input  type="submit" value="Rejestracja"/>
-</form>
+<table >
+    <tr>
+        <td>
+            <form th:action="@{/home/login}">
+                <input type="submit" value="Zaloguj"/>
+            </form>
+        </td>
+        <td>
+            <form th:action="@{/home/registration}">
+                <input type="submit" value="Nowy użytkownik"/>
+            </form>
+        </td>
+
+    </tr>
+    </thead>
+</table>
 
 </body>
 </html>
