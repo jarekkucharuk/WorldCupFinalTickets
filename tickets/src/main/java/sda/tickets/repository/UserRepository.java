@@ -6,8 +6,9 @@ import sda.tickets.model.UserForm;
 
 import java.util.Optional;
 
-public interface UserRepository extends JpaRepository <UserEntity, Long> {
+public interface UserRepository extends JpaRepository<UserEntity, Long> {
 
-    Optional <UserEntity> findByNick (String nick);
+    Optional<UserEntity> findById(Long id);
 
+    Optional<UserEntity> findByEmail(String email);
 }

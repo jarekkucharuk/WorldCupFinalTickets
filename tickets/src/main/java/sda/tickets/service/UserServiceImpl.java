@@ -9,6 +9,7 @@ import sda.tickets.model.UserForm;
 import sda.tickets.repository.UserRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService, UserDetailsService {
@@ -19,7 +20,6 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         this.userRepository = userRepository;
     }
 
-    @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return null;
     }
@@ -35,8 +35,9 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
 
+
     @Override
-    public void  createUser(UserForm userForm) {
+    public void createUser(UserForm userForm) {
         UserEntity user= new UserEntity();
         user.setEmail(userForm.getEmail());
         user.setFirstName(userForm.getFirstName());

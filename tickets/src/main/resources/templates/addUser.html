@@ -9,9 +9,9 @@
 </head>
 <body>
 <div class="big-blue-text">Rejestracja</div>
-<form th:action="@{/home/registration}"
-      th:object="${userForm}" method="POST">
-    <table >
+<form th:action="@{/home/registration}" th:object="${userForm}" method="POST">
+    <table>
+
         <tr>
             <td>
                 Imię:
@@ -67,24 +67,22 @@
         <br/>
 
     </table>
-    <table class="person-table">
-        <tr>
-            <td>
-                <form th:action="@{/home/login}">
-                    <input type="submit" value="Dodaj użytkownika"/>
-                </form>
-            </td>
-            <td>
-                <form th:action="@{/home}">
-                    <input type="submit" value="Strona główna"/>
-                </form>
-            </td>
+<table class="person-table">
+    <tr>
+        <td>
+        <th>
+            <input type="submit" value="Dodaj użytkownika"/>
+        </th>
+        </td>
+        <td th:action="@{/home}">
+            <input type="submit" value="Strona główna"/>
+        </td>
 
-        </tr>
-        </thead>
-    </table>
-
+    </tr>
+    </thead>
+</table>
 </form>
+
 
 </body>
 </html>

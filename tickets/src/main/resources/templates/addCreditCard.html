@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css" type="text/css"/>
+    <title>Nowa karta</title>
+</head>
+<body>
+<div class="big-blue-text">Rejestracja</div>
+<form th:action="@{/home/addCreditCard}"
+      th:object="${creditCardForm}" method="POST">
+    <table >
+        <tr>
+            <td>
+                Nick:
+            </td>
+            <td><input type="text" th:field="*{nick}"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Imię:
+            </td>
+            <td><input type="text" th:field="*{firstName}"/>
+            </td>
+        </tr>
+        <br/>
+
+        <tr>
+            <td>
+                Nazwisko:
+            </td>
+            <td>
+                <input type="text" th:field="*{lastName}"/>
+            </td>
+        </tr>
+        <br/>
+        <tr>
+            <td>
+                Numer karty:
+            </td>
+            <td>
+                <input type="text" th:field="*{number}"/>
+            </td>
+        </tr>
+        <br/>
+        <tr>
+            <td>
+                Miesiąc ważności:
+            </td>
+            <td>
+                <input type="text" th:field="*{month}"/>
+            </td>
+        </tr>
+        <br/>
+        <tr>
+            <td>Rok ważności:
+            </td>
+            <td>
+                <input type="text" th:field="*{year}"/>
+            </td>
+        </tr>
+        <br/>
+        <tr>
+            <td>
+                ccv:
+            </td>
+            <td>
+                <input type="text" th:field="*{ccv}"/>
+            </td>
+        </tr>
+        <br/>
+        <tr>
+            <td>
+                Limit na karcie:
+            </td>
+            <td>
+                <input type="text" th:field="*{limit}"/>
+            </td>
+        </tr>
+        <br/>
+    </table>
+    <table class="person-table">
+        <tr>
+            <td >
+                    <input type="submit" value="Zapisz kartę"/>
+            </td>
+            <td th:action="@{/home}">
+                    <input type="submit" value="Anuluj"/>
+            </td>
+
+        </tr>
+        </thead>
+    </table>
+
+</form>
+</body>
+</html>
