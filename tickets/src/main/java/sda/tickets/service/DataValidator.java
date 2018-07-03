@@ -1,21 +1,41 @@
 package sda.tickets.service;
 
+import lombok.NoArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import sda.tickets.model.UserForm;
 import org.apache.commons.validator.routines.EmailValidator;
 import sda.tickets.repository.UserRepository;
 
-import java.awt.*;
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
+import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
+import java.util.List;
 import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 
-public class UserValidator {
+@NoArgsConstructor
+public class DataValidator {
 
-    private final UserRepository userRepository;
-    private final PasswordEncoder passwordEncoder;
+    UserForm userForm= new UserForm();
+    private  UserRepository userRepository;
+    private  PasswordEncoder passwordEncoder;
 
-    public UserValidator(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+    final ValidatorFactory validatorFactory = Validation
+            .buildDefaultValidatorFactory();
+    final Validator validator = validatorFactory.getValidator();
+
+    public DataValidator(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
+    }
+
+    public List<String> errorsList (UserForm userForm){
+
+        final Set <ConstraintViolation<UserForm>> errors = validator.validate(userForm);
+
+        return errors.stream().map(cv -> cv.getMessage()).collect(Collectors.toList());
     }
 
     private final EmailValidator emailValidator=EmailValidator.getInstance();
@@ -39,4 +59,5 @@ public class UserValidator {
     private boolean validateLastName(String lastName){
         lastName=lastName.trim();
         return !lastName.equals("");
-    }}
+    }
+}

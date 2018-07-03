@@ -9,9 +9,12 @@
 </head>
 <body>
 <div class="big-blue-text">Rejestracja</div>
+<div th:if="${error}" th:utext="${error}"
+     style="color:red;font-style:italic;">
+    ...
+</div>
 <form th:action="@{/home/registration}" th:object="${userForm}" method="POST">
     <table>
-
         <tr>
             <td>
                 Imię:
@@ -49,7 +52,8 @@
         </tr>
         <br/>
         <tr>
-            <td>Hasło:
+            <td>
+                Hasło:
             </td>
             <td>
                 <input type="text" th:field="*{password}"/>
