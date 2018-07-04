@@ -7,13 +7,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import sda.tickets.model.CreditCardForm;
+import sda.tickets.model.LoginForm;
 import sda.tickets.model.UserForm;
 import sda.tickets.service.CreditCardService;
 import sda.tickets.service.DataValidator;
 import sda.tickets.service.UserService;
 
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 @RequestMapping(path = "/home")
@@ -33,8 +33,13 @@ public class TicketOrderController {
         return "home";
     }
 
+    @PostMapping("/login")
+        public String loginUser(){
+            return "userData";
+    }
+
     @GetMapping("/login")
-    public String loginUser(){
+    public String loginView(){
         return "login";
     }
 
@@ -57,12 +62,12 @@ public class TicketOrderController {
     @PostMapping(path="/registration")
     public String addUser(@ModelAttribute("userForm") UserForm userForm,
                           Model model){
-        List<String> error =dataValidator.errorsList(userForm);
+        List<String> error =dataValidator.createErrors(userForm);
         if (error.isEmpty()) {
             userService.createUser(userForm);
             return "login";
         }
-        model.addAttribute("error",error);
+        model.addAttribute("createError",error);
         return "addUser";
     }
 

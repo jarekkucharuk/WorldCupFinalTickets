@@ -19,4 +19,5 @@ public class UserEntity {
     private String lastName;
     private String nick;
     private String email;
+    private String password;
 }

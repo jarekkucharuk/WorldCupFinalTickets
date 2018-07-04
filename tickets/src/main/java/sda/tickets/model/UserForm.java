@@ -21,8 +21,10 @@ public class UserForm {
     @Email
     String email;
     @NotEmpty
-    String password;
-    Long id;
+    String password1;
+    @NotEmpty
+    String password2;
+    String id;
 
     public UserForm(){
     }

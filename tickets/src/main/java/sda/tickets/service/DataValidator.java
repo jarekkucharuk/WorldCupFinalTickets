@@ -2,19 +2,17 @@ package sda.tickets.service;
 
 import lombok.NoArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import sda.tickets.model.LoginForm;
 import sda.tickets.model.UserForm;
 import org.apache.commons.validator.routines.EmailValidator;
 import sda.tickets.repository.UserRepository;
 
-import javax.validation.ConstraintViolation;
-import javax.validation.Validation;
-import javax.validation.Validator;
-import javax.validation.ValidatorFactory;
+import javax.validation.*;
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+@Valid
 @NoArgsConstructor
 public class DataValidator {
 
@@ -31,33 +29,37 @@ public class DataValidator {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public List<String> errorsList (UserForm userForm){
+    public List<String> createErrors (UserForm userForm){
 
         final Set <ConstraintViolation<UserForm>> errors = validator.validate(userForm);
 
         return errors.stream().map(cv -> cv.getMessage()).collect(Collectors.toList());
     }
+//    public List<String> loginErrors (LoginForm loginForm){
+//        final Set<ConstraintViolation<LoginForm>> errors = validator.validate(loginForm);
+//        return errors.stream().map(cv->cv.getMessage()).collect(Collectors.toList());
+//    }
 
-    private final EmailValidator emailValidator=EmailValidator.getInstance();
-
-    private boolean validateEmail(String email){
-        return emailValidator.isValid(email)
-                && !userRepository.findByEmail(email).isPresent();
-    }
-
-    private Optional<String> validateDataForm (UserForm userForm){
-        if(!validateFirstName(userForm.getFirstName())){
-            return Optional.of("Niewłaściwe imię");
-        }
-        return Optional.empty();
-    }
-
-    private boolean validateFirstName(String firstName){
-        firstName=firstName.trim();
-        return !firstName.equals("");
-    }
-    private boolean validateLastName(String lastName){
-        lastName=lastName.trim();
-        return !lastName.equals("");
-    }
+//    private final EmailValidator emailValidator=EmailValidator.getInstance();
+//
+//    private boolean validateEmail(String email){
+//        return emailValidator.isValid(email)
+//                && !userRepository.findByEmail(email).isPresent();
+//    }
+//
+//    private Optional<String> validateDataForm (UserForm userForm){
+//        if(!validateFirstName(userForm.getFirstName())){
+//            return Optional.of("Niewłaściwe imię");
+//        }
+//        return Optional.empty();
+//    }
+//
+//    private boolean validateFirstName(String firstName){
+//        firstName=firstName.trim();
+//        return !firstName.equals("");
+//    }
+//    private boolean validateLastName(String lastName){
+//        lastName=lastName.trim();
+//        return !lastName.equals("");
+//    }
 }

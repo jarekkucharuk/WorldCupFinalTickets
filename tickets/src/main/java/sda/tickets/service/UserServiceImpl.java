@@ -1,27 +1,30 @@
 package sda.tickets.service;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import sda.tickets.model.UserEntity;
 import sda.tickets.model.UserForm;
 import sda.tickets.repository.UserRepository;
 
-import javax.validation.Validation;
-import javax.validation.Validator;
-import javax.validation.ValidatorFactory;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class UserServiceImpl implements UserService, UserDetailsService {
 
 
-    DataValidator dataValidator = new DataValidator();
+    private final PasswordEncoder passwordEncoder;
     private final UserRepository userRepository;
 
-    public UserServiceImpl(UserRepository userRepository) {
+    DataValidator dataValidator = new DataValidator();
+
+    public UserServiceImpl(PasswordEncoder passwordEncoder, UserRepository userRepository) {
+        this.passwordEncoder = passwordEncoder;
         this.userRepository = userRepository;
     }
 
@@ -29,30 +32,41 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         return null;
     }
 
+
     @Override
     public List<UserEntity> findAll() {
         return null;
     }
 
     @Override
-    public UserEntity findByNick(String nick) {
-        return null;
+    public User findByNick(String nick) {
+        UserEntity userEntity = new UserEntity();
+        User user = new User(userEntity.getNick(), userEntity.getPassword()
+                , true, true, true, true, getAuthorities());
+        return user;
+    }
+
+    public List<GrantedAuthority> getAuthorities() {
+        List<GrantedAuthority> authorityList = new ArrayList<GrantedAuthority>();
+        authorityList.add(new SimpleGrantedAuthority("ROLE_USER"));
+        authorityList.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
+        return authorityList;
     }
 
     @Override
     public void createUser(UserForm userForm) {
 
-        if (dataValidator.errorsList(userForm).isEmpty()){
-            UserEntity user= new UserEntity();
-        user.setEmail(userForm.getEmail());
-        user.setFirstName(userForm.getFirstName());
-        user.setLastName(userForm.getLastName());
-        user.setNick(userForm.getNick());
-        user.setId(userForm.getId());
+        if (dataValidator.createErrors(userForm).isEmpty()
+                && userForm.getPassword1().equals(userForm.getPassword2())) {
+            UserEntity userEntity = new UserEntity();
 
-        userRepository.save(user);
+            userEntity.setEmail(userForm.getEmail());
+            userEntity.setFirstName(userForm.getLastName());
+            userEntity.setLastName(userForm.getLastName());
+            userEntity.setNick(userForm.getNick());
+            userEntity.setPassword(passwordEncoder.encode(userForm.getPassword1()));
+
+            userRepository.save(userEntity);
         }
     }
-
-
 }

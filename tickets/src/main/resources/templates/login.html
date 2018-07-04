@@ -7,26 +7,30 @@
     <title>Logowanie</title>
 
 </head>
-<div class="big-blue-text">Logowanie</div>
+<div>Logowanie</div>
 <body>
-<br action="ReadData" method="POST" target="_blank">
-<input type="text" name="nick"  /> nazwa użytkownika </br>
-<input type="text" name="password" checked="checked" /> hasło</br>
-<table class="person-table">
-    <tr>
-        <td>
-            <form th:action="@{/home/userData}">
-                <input type="submit" value="Zaloguj"/>
-            </form>
-        </td>
-        <td>
-            <form th:action="@{/home}">
-                <input type="submit" value="Strona główna"/>
-            </form>
-        </td>
+<br >
 
-    </tr>
-    </thead>
-</table>
+<form action="/login"  method="get">
+    <input type="text" name="username"> nazwa użytkownika </br>
+    <input type="text" name="password"/> hasło</br>
+</form>
+
+<table class="person-table">
+        <tr>
+            <td >
+                <form th:action="@{/home/login}" method="Post">
+                <input type="submit" value="Zaloguj"/>
+                </form>
+            </td>
+            <td>
+                <form th:action="@{/home}" method="get">
+                <input type="submit" value="Strona główna"/>
+                </form>
+            </td>
+
+        </tr>
+        </thead>
+    </table>
 </body>
 </html>

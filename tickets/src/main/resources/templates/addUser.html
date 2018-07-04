@@ -9,7 +9,7 @@
 </head>
 <body>
 <div class="big-blue-text">Rejestracja</div>
-<div th:if="${error}" th:utext="${error}"
+<div th:if="${createError}" th:utext="${createError}"
      style="color:red;font-style:italic;">
     ...
 </div>
@@ -56,7 +56,7 @@
                 Hasło:
             </td>
             <td>
-                <input type="text" th:field="*{password}"/>
+                <input type="text" th:field="*{password1}"/>
             </td>
         </tr>
         <br/>
@@ -65,28 +65,28 @@
                 Powtórz hasło:
             </td>
             <td>
-                <input type="text" th:field="*{password}"/>
+                <input type="text" th:field="*{password2}"/>
             </td>
         </tr>
         <br/>
-
     </table>
-<table class="person-table">
+    <input type="submit" value="Zapisz"/>
+
+</form>
+<table >
     <tr>
         <td>
-        <th>
-            <input type="submit" value="Dodaj użytkownika"/>
-        </th>
+            <form th:action="@{/home/registration}" method="post">
+            </form>
         </td>
-        <td th:action="@{/home}">
-            <input type="submit" value="Strona główna"/>
+        <td>
+            <form th:action="@{/home}">
+                <input value="Strona główna"/>
+            </form>
         </td>
-
     </tr>
     </thead>
 </table>
-</form>
-
 
 </body>
 </html>
