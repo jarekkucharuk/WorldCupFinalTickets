@@ -9,9 +9,11 @@
 </head>
 <body>
 <div class="big-blue-text">Rejestracja</div>
-<div th:if="${createError}" th:utext="${createError}"
-     style="color:red;font-style:italic;">
-    ...
+<div th:if="${param.error}">
+    Niepoprawne dane
+</div>
+<div th:if="${param.logout}">
+    You have been logged out.
 </div>
 <form th:action="@{/home/registration}" th:object="${userForm}" method="POST">
     <table>

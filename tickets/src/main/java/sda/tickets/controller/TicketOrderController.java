@@ -12,7 +12,6 @@ import sda.tickets.model.UserForm;
 import sda.tickets.service.CreditCardService;
 import sda.tickets.service.DataValidator;
 import sda.tickets.service.UserService;
-
 import java.util.List;
 
 @Controller
@@ -33,15 +32,15 @@ public class TicketOrderController {
         return "home";
     }
 
-    @PostMapping("/login")
+    @GetMapping("/login")
         public String loginUser(){
-            return "userData";
+            return "login";
     }
 
-    @GetMapping("/login")
-    public String loginView(){
-        return "login";
-    }
+//    @RequestMapping("/login")
+//    public String loginView(){
+//        return "userData";
+//    }
 
     @GetMapping("/userData")
     public String addCreditCard() {

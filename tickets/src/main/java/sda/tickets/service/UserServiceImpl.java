@@ -16,7 +16,6 @@ import java.util.*;
 @Service
 public class UserServiceImpl implements UserService, UserDetailsService {
 
-
     private final PasswordEncoder passwordEncoder;
     private final UserRepository userRepository;
 
@@ -28,7 +27,9 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return null;
+        UserEntity userEntity = userRepository.findByNick(username)
+                .orElseThrow(() -> new UsernameNotFoundException(username));
+        return toUserDetails(userEntity);
     }
 
     @Override
@@ -62,19 +63,11 @@ public class UserServiceImpl implements UserService, UserDetailsService {
             userEntity.setFirstName(userForm.getLastName());
             userEntity.setLastName(userForm.getLastName());
             userEntity.setNick(userForm.getNick());
-//            userEntity.setPassword(passwordEncoder.encode(userForm.getPassword1()));
+            userEntity.setPassword(passwordEncoder.encode(userForm.getPassword1()));
 
             userRepository.save(userEntity);
         }
     }
-
-    public UserDetails loadUserByNick (String nick) throws UsernameNotFoundException {
-
-        UserEntity userEntity = userRepository.findByNick(nick)
-                .orElseThrow(() -> new UsernameNotFoundException(nick));
-        return toUserDetails(userEntity);
-    }
-
 
     private UserDetails toUserDetails(UserEntity userEntity){
             return User.builder()
@@ -86,5 +79,4 @@ public class UserServiceImpl implements UserService, UserDetailsService {
                     .credentialsExpired(false)
                     .build();
         }
-
     }

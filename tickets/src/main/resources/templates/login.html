@@ -13,8 +13,8 @@
 
 <table>
 
-    <form action="/home/login" method="post">
-        <input type="text" name="nick"> nazwa użytkownika </br>
+    <form th:action="@{/home/login}" method="post">
+        <input type="text" name="username"> nazwa użytkownika </br>
         <input type="text" name="password"/> hasło</br>
 
         <tr>
