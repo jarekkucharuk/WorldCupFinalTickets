@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="pl" xmlns:th="http://www.thymeleaf.org">
-
+<html lang ="pl" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css" type="text/css"/>
@@ -9,28 +9,24 @@
 </head>
 <div>Logowanie</div>
 <body>
-<br >
+<br>
 
-<form action="/login"  method="get">
-    <input type="text" name="username"> nazwa użytkownika </br>
-    <input type="text" name="password"/> hasło</br>
-</form>
+<table>
 
-<table class="person-table">
+    <form action="/home/login" method="post">
+        <input type="text" name="nick"> nazwa użytkownika </br>
+        <input type="text" name="password"/> hasło</br>
+
         <tr>
-            <td >
-                <form th:action="@{/home/login}" method="Post">
-                <input type="submit" value="Zaloguj"/>
-                </form>
-            </td>
             <td>
-                <form th:action="@{/home}" method="get">
-                <input type="submit" value="Strona główna"/>
-                </form>
+                <input class="button" type="submit" value="Zaloguj"/>
             </td>
-
-        </tr>
-        </thead>
-    </table>
+    </form>
+    <td>
+        <a href="/home/">Strona główna</a>
+    </td>
+    </tr>
+    </thead>
+</table>
 </body>
 </html>

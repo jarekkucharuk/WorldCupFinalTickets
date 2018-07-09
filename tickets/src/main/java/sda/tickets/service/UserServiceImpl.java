@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import sda.tickets.model.UserEntity;
 import sda.tickets.model.UserForm;
 import sda.tickets.repository.UserRepository;
-
 import java.util.*;
 
 @Service
@@ -23,7 +22,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
     DataValidator dataValidator = new DataValidator();
 
-    public UserServiceImpl(PasswordEncoder passwordEncoder, UserRepository userRepository) {
+        public UserServiceImpl(PasswordEncoder passwordEncoder, UserRepository userRepository) {
         this.passwordEncoder = passwordEncoder;
         this.userRepository = userRepository;
     }
@@ -31,7 +30,6 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return null;
     }
-
 
     @Override
     public List<UserEntity> findAll() {
@@ -64,9 +62,29 @@ public class UserServiceImpl implements UserService, UserDetailsService {
             userEntity.setFirstName(userForm.getLastName());
             userEntity.setLastName(userForm.getLastName());
             userEntity.setNick(userForm.getNick());
-            userEntity.setPassword(passwordEncoder.encode(userForm.getPassword1()));
+//            userEntity.setPassword(passwordEncoder.encode(userForm.getPassword1()));
 
             userRepository.save(userEntity);
         }
     }
-}
+
+    public UserDetails loadUserByNick (String nick) throws UsernameNotFoundException {
+
+        UserEntity userEntity = userRepository.findByNick(nick)
+                .orElseThrow(() -> new UsernameNotFoundException(nick));
+        return toUserDetails(userEntity);
+    }
+
+
+    private UserDetails toUserDetails(UserEntity userEntity){
+            return User.builder()
+                    .username(userEntity.getNick())
+                    .password(userEntity.getPassword())
+                    .authorities(Collections.EMPTY_LIST)
+                    .accountExpired(false)
+                    .accountLocked(false)
+                    .credentialsExpired(false)
+                    .build();
+        }
+
+    }

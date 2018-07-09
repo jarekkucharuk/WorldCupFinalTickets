@@ -18,19 +18,34 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/").permitAll()
-                .antMatchers("/home").permitAll()
+                .antMatchers("/home/login").permitAll()
                 .and()
                 .formLogin()
-                .loginPage("/login")
+                .loginPage("/home/login")
+                .failureForwardUrl("/home/login")
+                .defaultSuccessUrl("/home/userData")
                 .permitAll()
                 .and()
                 .logout()
                 .permitAll();
     }
 
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
+//    @Bean
+//    @Override
+//    public UserDetailsService userDetailsService(){
+//        UserDetails user =
+//                User.withDefaultPasswordEncoder()
+//                .username("111")
+//                .password("111")
+//                .roles("ADMIN")
+//                .build();
+//
+//                return new InMemoryUserDetailsManager(user);
+//    }
 }

@@ -3,11 +3,11 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css" type="text/css"/>
-    <title>User's data</title>
+    <link rel="stylesheet" href="../static/style.css" type="text/css"/>
+    <title>Dane użytkownika</title>
 </head>
 <br>
-<table class="person-table">
+<table >
     <caption>Twoje dane</caption>
     <thead>
     <tr>
@@ -49,22 +49,16 @@
     </tbody>
 </table>-->
 </br>
-<table class="person-table">
+<table >
     <tr>
         <td>
-            <form th:action="@{/home/availableTickets}">
-                <input type="submit" value="Dostępne bilety"/>
-            </form>
+            <a href="/home/availableTickets">Dostępne bilety</a>
         </td>
         <td>
-            <form th:action="@{/home/addCreditCard}">
-                <input type="submit" value="Dodaj kartę kredytową"/>
-            </form>
+            <a href="/home/addCreditCard">Dodaj kartę kredytową</a>
         </td>
         <td>
-            <form th:action="@{/home}">
-                <input type="submit" value="Wyloguj"/>
-            </form>
+            <a href="/home/">Strona główna</a>
         </td>
 
     </tr>

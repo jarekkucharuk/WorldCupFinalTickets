@@ -43,7 +43,7 @@ public class TicketOrderController {
         return "login";
     }
 
-    @RequestMapping("/userData")
+    @GetMapping("/userData")
     public String addCreditCard() {
         return "userData";
     }
