@@ -8,7 +8,7 @@ import java.util.List;
 public interface UserService {
 
     List<UserEntity> findAll();
-    User findByNick(String nick);
+    User findByUsername(String nick);
 
     void createUser(UserForm userForm) ;
 }

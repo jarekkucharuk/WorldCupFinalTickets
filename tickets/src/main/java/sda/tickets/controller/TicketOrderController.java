@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import sda.tickets.model.CreditCardForm;
-import sda.tickets.model.LoginForm;
 import sda.tickets.model.UserForm;
 import sda.tickets.service.CreditCardService;
 import sda.tickets.service.DataValidator;
@@ -32,7 +31,7 @@ public class TicketOrderController {
         return "home";
     }
 
-    @GetMapping("/login")
+    @RequestMapping("/login")
         public String loginUser(){
             return "login";
     }
@@ -42,7 +41,7 @@ public class TicketOrderController {
 //        return "userData";
 //    }
 
-    @GetMapping("/userData")
+    @RequestMapping("/userData")
     public String addCreditCard() {
         return "userData";
     }

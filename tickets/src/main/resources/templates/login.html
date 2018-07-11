@@ -3,27 +3,31 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css" type="text/css"/>
+    <link rel="stylesheet" href="../static/style.css" type="text/css"/>
     <title>Logowanie</title>
 
 </head>
 <div>Logowanie</div>
 <body>
-<br>
-
+<div th:if="${param.error}">
+    Złe dane
+</div>
+<div th:if="${param.logout}">
+    Wylogowano
+</div>
 <table>
 
     <form th:action="@{/home/login}" method="post">
         <input type="text" name="username"> nazwa użytkownika </br>
-        <input type="text" name="password"/> hasło</br>
+        <input type="password" name="password"/> hasło</br>
 
         <tr>
             <td>
-                <input class="button" type="submit" value="Zaloguj"/>
+                <input style="color: orangered" type="submit" value="Zaloguj"/>
             </td>
     </form>
-    <td>
-        <a href="/home/">Strona główna</a>
+    <td type="button">
+        <a style="color: orangered" type="" href="/home/">Strona główna</a>
     </td>
     </tr>
     </thead>

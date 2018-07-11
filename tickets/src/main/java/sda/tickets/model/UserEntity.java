@@ -2,7 +2,6 @@ package sda.tickets.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
 
 @Data
@@ -17,7 +16,7 @@ public class UserEntity {
 
     private String firstName;
     private String lastName;
-    private String nick;
+    private String username;
     private String email;
     private String password;
 }

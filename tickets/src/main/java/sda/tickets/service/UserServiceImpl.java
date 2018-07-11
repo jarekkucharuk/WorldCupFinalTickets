@@ -27,7 +27,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        UserEntity userEntity = userRepository.findByNick(username)
+        UserEntity userEntity = userRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException(username));
         return toUserDetails(userEntity);
     }
@@ -38,9 +38,9 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     @Override
-    public User findByNick(String nick) {
+    public User findByUsername(String nick) {
         UserEntity userEntity = new UserEntity();
-        User user = new User(userEntity.getNick(), userEntity.getPassword()
+        User user = new User(userEntity.getUsername(), userEntity.getPassword()
                 , true, true, true, true, getAuthorities());
         return user;
     }
@@ -62,7 +62,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
             userEntity.setEmail(userForm.getEmail());
             userEntity.setFirstName(userForm.getLastName());
             userEntity.setLastName(userForm.getLastName());
-            userEntity.setNick(userForm.getNick());
+            userEntity.setUsername(userForm.getNick());
             userEntity.setPassword(passwordEncoder.encode(userForm.getPassword1()));
 
             userRepository.save(userEntity);
@@ -71,7 +71,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
     private UserDetails toUserDetails(UserEntity userEntity){
             return User.builder()
-                    .username(userEntity.getNick())
+                    .username(userEntity.getUsername())
                     .password(userEntity.getPassword())
                     .authorities(Collections.EMPTY_LIST)
                     .accountExpired(false)

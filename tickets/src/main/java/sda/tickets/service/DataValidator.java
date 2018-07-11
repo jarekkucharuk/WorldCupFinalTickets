@@ -2,9 +2,7 @@ package sda.tickets.service;
 
 import lombok.NoArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import sda.tickets.model.LoginForm;
 import sda.tickets.model.UserForm;
-import org.apache.commons.validator.routines.EmailValidator;
 import sda.tickets.repository.UserRepository;
 
 import javax.validation.*;

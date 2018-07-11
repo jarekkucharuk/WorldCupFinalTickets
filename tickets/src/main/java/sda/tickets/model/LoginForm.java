@@ -2,7 +2,6 @@ package sda.tickets.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-
 import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
 
@@ -12,7 +11,7 @@ import javax.validation.constraints.NotEmpty;
 public class LoginForm {
 
     @NotEmpty
-    String nick;
+    String username;
     @NotEmpty
     String password;
 
