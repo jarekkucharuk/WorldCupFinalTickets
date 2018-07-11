@@ -23,6 +23,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/home").permitAll()
                 .antMatchers("/home/login").permitAll()
+                .antMatchers("/home/userData").authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/home/login")
@@ -45,7 +46,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public UserDetailsService userDetailsService(){
         UserDetails user =
                 User.withDefaultPasswordEncoder()
-                .username("111")
+                .username("adam")
                 .password("111")
                 .roles("ADMIN")
                 .build();
